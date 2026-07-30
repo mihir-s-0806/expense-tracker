@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: expense-tracker
+    runtime: docker
+    plan: free
+    region: singapore
+    buildCommand: docker build -t expense-tracker .
+    startCommand: docker run -p $PORT:$PORT expense-tracker
+    envVars:
+      - key: PORT
+        value: 8080

@@ -1,0 +1,3 @@
+com\tracker\expensetracker\controller\TransactionControllerTest.class
+com\tracker\expensetracker\service\InsightsServiceTest.class
+com\tracker\expensetracker\ExpenseTrackerApplicationTests.class
