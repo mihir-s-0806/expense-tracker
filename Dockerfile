@@ -10,9 +10,8 @@ FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 COPY --from=build /app/target/expense-tracker-1.0.0.jar app.jar
 
-# Render assigns dynamic port & PostgreSQL active profile
+# Render assigns dynamic port via $PORT environment variable
 ENV PORT=8080
-ENV SPRING_PROFILES_ACTIVE=postgres
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-Dserver.port=${PORT}", "-Dspring.profiles.active=${SPRING_PROFILES_ACTIVE}", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-Dserver.port=${PORT}", "-jar", "app.jar"]
