@@ -4,8 +4,27 @@ services:
     runtime: docker
     plan: free
     region: singapore
-    buildCommand: docker build -t expense-tracker .
-    startCommand: docker run -p $PORT:$PORT expense-tracker
     envVars:
       - key: PORT
         value: 8080
+      - key: SPRING_PROFILES_ACTIVE
+        value: postgres
+      - key: SPRING_DATASOURCE_URL
+        fromDatabase:
+          name: expense-tracker-db
+          property: connectionString
+      - key: SPRING_DATASOURCE_USERNAME
+        fromDatabase:
+          name: expense-tracker-db
+          property: user
+      - key: SPRING_DATASOURCE_PASSWORD
+        fromDatabase:
+          name: expense-tracker-db
+          property: password
+
+databases:
+  - name: expense-tracker-db
+    databaseName: expensetrackerdb
+    user: postgres
+    plan: free
+    region: singapore
