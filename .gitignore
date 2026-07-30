@@ -1,0 +1,14 @@
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!target/classes/META-INF/
+
+### Environment variables ###
+.env
+!.env.example
+
+### IDE & OS files ###
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db
